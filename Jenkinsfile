@@ -30,7 +30,7 @@ pipeline {
     stage('Docker Tag') {
       agent any
       steps {
-        sh 'docker tag danielazacarias/spring-petclinic danielazacarias/sprint-petclinic:version1.0'
+        sh 'docker tag danielazacarias/spring-petclinic danielazacarias/sprint-petclinic:version1.1'
       }
     }
     
@@ -40,7 +40,7 @@ pipeline {
           steps {
             withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-            sh 'docker push danielazacarias/sprint-petclinic:version1.0'
+            sh 'docker push danielazacarias/sprint-petclinic:version1.1'
         }
       }
 
