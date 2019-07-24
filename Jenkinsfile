@@ -1,6 +1,10 @@
 #!groovy
 
-/* CI/CD pipeline Jenkins + Docker */
+/*
+CI/CD pipeline Jenkins + Docker
+24/julio/2019
+*/
+
 pipeline {
   agent none
   stages {
