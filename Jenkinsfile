@@ -23,16 +23,24 @@ pipeline {
     stage('Docker Run') {
       agent any
       steps {
-        sh 'docker run -p 8081:8080 danielazacarias/spring-petclinic'
+        sh 'docker run -dit -p 8081:8080 danielazacarias/spring-petclinic'
+      }
+    }
+ 
+    stage('Docker Tag') {
+      agent any
+      steps {
+        sh 'docker tag danielazacarias/spring-petclinic danielazacarias/sprint-petclinic:version1.0'
       }
     }
     
-    stage('Docker Push'){
+    
+    stage('Docker Login and Push'){
          agent any
           steps {
             withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-            sh 'docker push danielazacarias/spring-petclinic:latest'
+            sh 'docker push danielazacarias/sprint-petclinic:version1.0'
         }
       }
 
