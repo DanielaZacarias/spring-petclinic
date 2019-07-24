@@ -1,6 +1,5 @@
 #!groovy
 
-/*Docker + Jenkins integration*/
 pipeline {
   agent none
   stages {
