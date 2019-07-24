@@ -1,5 +1,6 @@
 #!groovy
 
+/* CI/CD pipeline Jenkins + Docker */
 pipeline {
   agent none
   stages {
