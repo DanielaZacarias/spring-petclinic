@@ -19,6 +19,14 @@ pipeline {
         sh 'docker build -t danielazacarias/spring-petclinic:latest .'
       }
     }
+    
+    stage('Docker Run') {
+      agent any
+      steps {
+        sh 'docker run -p 8081:8080 danielazacarias/spring-petclinic'
+      }
+    }
+    
     stage('Docker Push'){
          agent any
           steps {
