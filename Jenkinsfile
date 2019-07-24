@@ -28,7 +28,7 @@ pipeline {
     stage('Docker Run') {
       agent any
       steps {
-        sh 'docker run -dit -p 8082:8080 danielazacarias/spring-petclinic --name newcontainer'
+        sh 'docker run -dit --name new_container -p 8082:8080 danielazacarias/spring-petclinic'
       }
     }
  
@@ -52,8 +52,8 @@ pipeline {
     stage('Docker Stop and Remove') {
       agent any
       steps {
-        sh "docker stop newcontainer"
-        sh 'docker rm newcontainer'
+        sh "docker stop new_container"
+        sh 'docker rm new_container'
       }
     }
     
