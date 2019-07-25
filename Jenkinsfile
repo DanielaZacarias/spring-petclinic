@@ -49,6 +49,13 @@ pipeline {
       }
     }
     
+   stage('Sleep') {
+      agent any
+      steps {
+        sh "sleep 120"
+      }
+    }
+    
     stage('Docker Stop and Remove') {
       agent any
       steps {
